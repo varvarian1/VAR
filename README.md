@@ -1,17 +1,17 @@
 # VAR - Minimalist Terminal Text Editor
 
-## About VAR
+### About VAR
 
 VAR is a lightweight, terminal-based text editor written in C++ using ncurses. It's designed for quick file editing with minimal dependencies.
 
-## Features
+### Features
 - [x] Basic text editing
 - [x] File saving/loading
 - [ ] Syntax highlighting
 - [ ] Multiple tabs
 - [ ] Configuration file
 
-## Usage
+### Usage
 
 ```bash
 Options:
@@ -35,7 +35,7 @@ On Ubuntu/Debian:
 sudo apt install build-essential cmake libncurses5-dev
 ```
 
-## Building from source
+### Building from source
 ```bash
 mkdir build && cd build
 cmake ..
