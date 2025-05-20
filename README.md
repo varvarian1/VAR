@@ -22,6 +22,7 @@ Controls:
   Arrow keys       Move cursor
   Ctrl+S           Save file
   Ctrl+X           Exit
+  Ctrl+L           Show or hide line numbers
 ```
 
 ### Prerequisites
