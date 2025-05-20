@@ -19,7 +19,7 @@ namespace Var {
     public:
         void draw(const Buffer& buffer, const Cursor& cursor, bool modified, const std::string& filename);
         void update_dimensions();
-        void clear_screen();
+        // void clear_screen();
         int calculate_text_start_column(int cursor_line, int total_lines) const;
         void draw_buffer_content(const Buffer& buffer, int cursor_line, int text_start_col, const Cursor& cursor);
         void draw_line(const Buffer& buffer, int buffer_line, int screen_row, int start_col, bool is_cursor_line, const Cursor& cursor);

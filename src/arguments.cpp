@@ -66,5 +66,5 @@ void ArgumentParser::print_help() {
 }
 
 void ArgumentParser::print_version() {
-    std::cout << "program version 1.0\n";
+    std::cout << "program version 1.1\n";
 }

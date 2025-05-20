@@ -14,6 +14,10 @@ VAR is a lightweight, terminal-based text editor written in C++ using ncurses. I
 ### Usage
 
 ```bash
+var filename.txt
+```
+
+```bash
 Options:
   -h, --help       Show this help message
   -v, --version    Display version information

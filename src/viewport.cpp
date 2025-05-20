@@ -13,14 +13,14 @@ namespace Var {
 
     void Viewport::draw(const Buffer& buffer, const Cursor& cursor, bool modified, const std::string& filename) {
         update_dimensions();
-        clear_screen();
+        // clear_screen();
         
         const auto [cursor_line, cursor_col] = cursor.position();
         const int text_start_col = calculate_text_start_column(cursor_line, buffer.line_count());
         
         draw_buffer_content(buffer, cursor_line, text_start_col, cursor);
-        position_cursor(buffer, cursor, text_start_col);
         draw_status_bar(buffer, cursor, modified, filename);
+        position_cursor(buffer, cursor, text_start_col);
         
         refresh();
     }
@@ -29,10 +29,10 @@ namespace Var {
         getmaxyx(stdscr, height, width);
     }
 
-    void Viewport::clear_screen() {
-        attron(COLOR_PAIR(1));
-        clear();
-    }
+    // void Viewport::clear_screen() {
+    //     attron(COLOR_PAIR(1));
+    //     clear();
+    // }
 
     int Viewport::calculate_text_start_column(int cursor_line, int total_lines) const {
         if (show_line_numbers) {
@@ -98,6 +98,9 @@ namespace Var {
                 line + 1, col + 1,
                 modified ? "[+]" : "");
         
+        std::string version = "VAR 1.1";
+        mvprintw(height - 1, width - version.length() - 1, "%s", version.c_str());
+
         attroff(COLOR_PAIR(1) | A_BOLD);
     }
 
