@@ -55,6 +55,16 @@ namespace Var {
             adjust_col_for_line(buffer);
         }
     }
+
+    //fix
+    // void Cursor::tab(const Buffer& buffer) {
+    //     initscr(); 
+    //     set_tabsize(3); 
+    //     noecho();
+        
+    //     printw("\t");
+    //     getch();
+    // }
     
     void Cursor::clamp(const Buffer& buffer, int& viewport_y) {
         clamp_line_position(buffer);

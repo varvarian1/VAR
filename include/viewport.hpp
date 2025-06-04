@@ -1,6 +1,8 @@
 #ifndef VIEWPORT
 #define VIEWPORT
 
+#include <ncurses.h>
+
 #include "buffer.hpp"
 #include "cursor.hpp"
 
@@ -13,6 +15,9 @@ namespace Var {
         int height = 0;
         bool show_line_numbers = true;
 
+        WINDOW* front_buffer;
+        WINDOW* back_buffer;
+
         static constexpr int LINE_NUMBERS_WIDTH = 6;
         static constexpr int LINE_NUMBERS_SEPARATOR_COL = 5;
             
@@ -22,6 +27,8 @@ namespace Var {
         // void clear_screen();
         int calculate_text_start_column(int cursor_line, int total_lines) const;
         void draw_buffer_content(const Buffer& buffer, int cursor_line, int text_start_col, const Cursor& cursor);
+        void init_buffers();
+        void swap_buffers();
         void draw_line(const Buffer& buffer, int buffer_line, int screen_row, int start_col, bool is_cursor_line, const Cursor& cursor);
         void position_cursor(const Buffer& buffer, const Cursor& cursor, int text_start_col);
         bool is_cursor_visible(int cursor_line) const;

@@ -19,6 +19,7 @@ namespace Var {
         void move_right(const Buffer& buffer);
         void move_up(const Buffer& buffer);
         void move_down(const Buffer& buffer);
+        // void tab(const Buffer& buffer);
         void clamp(const Buffer& buffer, int& viewport_y);
         std::pair<int, int> position() const;
         void set_position(int line, int col);

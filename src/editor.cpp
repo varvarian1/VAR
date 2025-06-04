@@ -37,6 +37,12 @@ namespace Var {
 
         attron(COLOR_PAIR(2)); 
         bkgd(COLOR_PAIR(1));
+
+        viewport.init_buffers();
+
+        int rows, cols;
+        getmaxyx(stdscr, rows, cols);
+        viewport.update_size(cols, rows);
     
         while (running) {
             viewport.draw(buffer, cursor, modified, filename);
@@ -44,7 +50,6 @@ namespace Var {
             handle_input(ch);
             
             if (ch == KEY_RESIZE) {
-                int rows, cols;
                 getmaxyx(stdscr, rows, cols);
                 viewport.update_size(cols, rows);
             }
@@ -70,6 +75,9 @@ namespace Var {
             case KEY_RIGHT: 
                 cursor.move_right(buffer); 
                 break;
+            // case '\t':
+            //     cursor.tab(buffer);
+            //     break;
             case KEY_BACKSPACE:
             case 127:
                 buffer.delete_char_before_cursor(cursor_line, cursor_col);
