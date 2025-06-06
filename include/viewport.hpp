@@ -8,23 +8,39 @@
 
 namespace Var {
 
+    /**
+     * Handles terminal display rendering
+     *
+     * Implements:
+     * - Double-buffered display to prevent flickering
+     * - Line number gutter
+     * - Status bar with file information
+     * - Cursor position highlighting
+     * - Viewport scrolling
+     */
     class Viewport {
     private:
+        // Vertical scroll offset (lines scrolled down)
         int viewport_y = 0;
-        int width = 0;
-        int height = 0;
+
+        // Current dimensions of visible area
+        int width = 0; // in characters
+        int height = 0; // in lines
+
+        // Toggle for line numbers display
         bool show_line_numbers = true;
 
-        WINDOW* front_buffer;
-        WINDOW* back_buffer;
+        // Double buffering system
+        WINDOW* front_buffer; // Primary buffer (stdscr)
+        WINDOW* back_buffer; // Secondary buffer for rendering
 
-        static constexpr int LINE_NUMBERS_WIDTH = 6;
-        static constexpr int LINE_NUMBERS_SEPARATOR_COL = 5;
+        // Line numbers gutter formatting
+        static constexpr int LINE_NUMBERS_WIDTH = 6; // Total gutter width
+        static constexpr int LINE_NUMBERS_SEPARATOR_COL = 5; // Position of '|' separator
             
     public:
         void draw(const Buffer& buffer, const Cursor& cursor, bool modified, const std::string& filename);
         void update_dimensions();
-        // void clear_screen();
         int calculate_text_start_column(int cursor_line, int total_lines) const;
         void draw_buffer_content(const Buffer& buffer, int cursor_line, int text_start_col, const Cursor& cursor);
         void init_buffers();
